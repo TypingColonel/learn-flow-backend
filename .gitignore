@@ -1,0 +1,6 @@
+yt-rag/.env
+yt-rag/routes/__pycache__
+yt-rag/services/__pycache__
+yt-rag/__pycache__
+venv/
+.env
