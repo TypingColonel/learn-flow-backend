@@ -4,3 +4,8 @@ yt-rag/services/__pycache__
 yt-rag/__pycache__
 venv/
 .env
+
+web-rag/.env
+web-rag/routes/__pycache__
+web-rag/services/__pycache__
+web-rag/__pycache__
