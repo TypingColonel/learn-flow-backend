@@ -53,6 +53,6 @@ def add_text(text):
     return chunks
 
 
-def query(question, k=8):
+def query(question, k=15):
     results = vectorstore.similarity_search(question, k=k)
     return [doc.page_content for doc in results]

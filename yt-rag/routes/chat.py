@@ -107,7 +107,7 @@ graph = create_graph()
 async def fetch_and_index_transcript(
     video_url: str = Query(..., description="YouTube video URL"),
     session_id: str = Query(..., description="Unique session ID"),
-    max_chunks: int = Query(80, description="Maximum transcript chunks to retain"),
+    max_chunks: int = Query(100, description="Maximum transcript chunks to retain"),
     lang: str = Query("en", description="Transcript language"),
 ):
     try:
@@ -143,7 +143,7 @@ async def fetch_and_index_transcript(
 async def query_transcript(
     question: str = Query(..., description="Question about the transcript"),
     session_id: str = Query(..., description="Unique session ID"),
-    k: int = Query(8, description="Number of vector search results to retrieve"),
+    k: int = Query(15, description="Number of vector search results to retrieve"),
 ):
     retrieved = vector_store.query(question, k=k)
     if not retrieved:
