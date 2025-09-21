@@ -103,33 +103,6 @@ def create_graph():
 
 graph = create_graph()
 
-
-# ---------- Upload transcript endpoint ----------
-@router.post("/chat/upload")
-async def upload_transcript(
-    file: UploadFile = File(...),
-    session_id: str = Query(..., description="Unique session ID"),
-    max_chunks: int = Query(80, description="Maximum transcript chunks to retain"),
-):
-    contents = await file.read()
-    text = contents.decode("utf-8")
-    new_chunks = vector_store.add_text(text)
-
-    config = {"configurable": {"thread_id": session_id}}
-    try:
-        existing_state = graph.get_state(config).values
-        existing_chunks = existing_state.get("transcript_context", []) or []
-        existing_messages = existing_state.get("messages", []) or []
-    except Exception:
-        existing_chunks, existing_messages = [], []
-
-    merged = merge_contexts(existing_chunks, new_chunks, max_chunks=max_chunks)
-    new_state = {"messages": existing_messages, "transcript_context": merged}
-    graph.update_state(config, new_state)
-
-    return {"indexed_chunks": len(new_chunks), "session_id": session_id}
-
-
 # ---------- Fetch transcript automatically ----------
 @router.post("/chat/fetch")
 async def fetch_and_index_transcript(

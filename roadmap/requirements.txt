@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+gitpython
+requests
+groq
+python-dotenv
