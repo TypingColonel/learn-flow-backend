@@ -1,4 +1,3 @@
-# services/roadmap_gen.py
 from groq import Groq
 import json, os
 from dotenv import load_dotenv

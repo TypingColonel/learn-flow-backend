@@ -1,4 +1,3 @@
-# routes/chat.py
 from fastapi import APIRouter, UploadFile, File, Query, HTTPException
 from services import vector_store, transcript
 from typing import Annotated, List

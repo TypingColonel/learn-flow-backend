@@ -1,5 +1,3 @@
-
-# services/stack_parser.py
 import os, json
 
 
