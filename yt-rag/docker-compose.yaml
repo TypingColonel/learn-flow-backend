@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  yt-rag:
+    image: youtube-rag
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_MODEL=${GEMINI_MODEL}
+      - GEMINI_TEMPERATURE=${GEMINI_TEMPERATURE}
+      - PINECONE_API_KEY=${PINECONE_API_KEY}
+      - PINECONE_INDEX_NAME=${PINECONE_INDEX_NAME}
